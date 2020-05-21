@@ -15,7 +15,7 @@ RUN dotnet build "APITester.csproj" -c Release -o /app/
 FROM build AS publish
 RUN dotnet publish "APITester.csproj" -c Release -o /app/publish
 
-#FROM base AS final
-#WORKDIR /app
-#COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "APITester.dll"]
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "APITester.dll"]
