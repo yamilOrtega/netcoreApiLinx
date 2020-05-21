@@ -7,8 +7,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["APITester.csproj", "./APITester"]
-RUN dotnet restore "./APITester/APITester.csproj"
+COPY ["APITester.csproj", "./"]
+RUN dotnet restore "./APITester.csproj"
 COPY . .
 RUN dotnet build "APITester.csproj" -c Release -o /app/
 
