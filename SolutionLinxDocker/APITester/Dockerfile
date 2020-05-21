@@ -4,6 +4,8 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
+#file .dockerignore and DockerFile must be in the same directory as the main csproj file.
+
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
@@ -19,3 +21,11 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "APITester.dll"]
+
+#For building de image type
+#sudo docker build -t tag:version directorio
+#Sample
+#sudo docker build -t apitester:v1.1 .
+#For adding the container 
+# -it is for interactive -rm is for remove after using -p is port first docker machine, second internal docker container port and image with tag
+#sudo docker run -it --rm -p 8000:80 apitester:v1.1
