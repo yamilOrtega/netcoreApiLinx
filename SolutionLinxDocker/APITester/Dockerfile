@@ -12,8 +12,8 @@ RUN dotnet restore "./APITester.csproj"
 COPY . .
 RUN dotnet build "APITester.csproj" -c Release -o /app/
 
-#FROM build AS publish
-#RUN dotnet publish "APITester.csproj" -c Release -o /app/publish
+FROM build AS publish
+RUN dotnet publish "APITester.csproj" -c Release -o /app/publish
 
 #FROM base AS final
 #WORKDIR /app
