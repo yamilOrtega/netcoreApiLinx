@@ -22,7 +22,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "APITester.dll"]
 
-#For building de image type
+#For building de image type for linux images
 #sudo docker build -t tag:version directorio
 #Sample
 #sudo docker build -t apitester:v1.1 .
